@@ -25,5 +25,8 @@
         <module name="lab1_cmpgr" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lab1_cmpgr" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

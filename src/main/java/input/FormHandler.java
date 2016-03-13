@@ -2,13 +2,14 @@ package input;
 
 import shapes.*;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class FormHandler {
-    private List<ShapeRadioButton> shapeButtons = new LinkedList<>();
+    private List<ShapeRadioButton> shapeButtons = new ArrayList<>();
     private Context context;
-    private List<ColorMixRadioButton> colorMixButtons = new LinkedList<>();
+    private List<ColorMixRadioButton> colorMixButtons = new ArrayList<>();
 
 
 
@@ -28,7 +29,7 @@ public class FormHandler {
         shapeButtons.add(new ShapeRadioButton(new Ellipse(), this, context));
         shapeButtons.add(new ShapeRadioButton(new Rectangle(), this, context));
         shapeButtons.add(new ShapeRadioButton(new Pentagon(), this, context));
-        //shapeButtons.add(new ShapeRadioButton(new Star(), this, context));
+        shapeButtons.add(new ShapeRadioButton(new Star(), this, context));
         shapeButtons.add(new ShapeRadioButton(new SandWatch(), this, context));
         ColorMixRadioButton and = new ColorMixRadioButton(Context.AND_COLOR_MIX_TYPE, this, context, "And");
         and.setSelected(true);

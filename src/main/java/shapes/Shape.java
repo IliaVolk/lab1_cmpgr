@@ -44,4 +44,5 @@ public abstract class Shape implements Paintable {
     public void setColor(Color color) {
         this.color = color;
     }
+
 }

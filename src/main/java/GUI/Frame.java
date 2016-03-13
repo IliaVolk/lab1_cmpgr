@@ -23,12 +23,9 @@ public class Frame extends JFrame {
     private Frame(){
         super("Laboratory work №1 by Ilia Volk");
         Util.setFrame(this);
-        PointHandler pointHandler = new PointHandler();
         inputManager.setGlEventListener(new GLEventListenerImpl(inputManager.getContext()));
-        inputManager.getGlEventListener().addPaintable(pointHandler);
         inputManager.setGlobalMouseListener(new GlobalMouseListener(
-                inputManager.getGlEventListener(), inputManager.getContext(), this,
-                pointHandler
+                inputManager.getGlEventListener(), inputManager.getContext(), this
                 ));
 
 
@@ -65,7 +62,7 @@ public class Frame extends JFrame {
         rightPanel.setMaximumSize(new Dimension(100, 300));
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
         //color chooser
-        JButton colorChooserButton = new JButton("Choose a color");
+        JButton colorChooserButton = new JButton("Choose color      ");
         final Frame frame = this;
         //color shower
         final JPanel colorShower = new JPanel();
@@ -75,6 +72,7 @@ public class Frame extends JFrame {
         colorShower.setBackground(inputManager.getContext().getColor());
         colorShower.setOpaque(true);
         //color shower ends
+        //color choose button
         colorChooserButton.addActionListener(e -> {
             Color c = JColorChooser.showDialog(frame,
                     "Choose color", null);
@@ -89,7 +87,7 @@ public class Frame extends JFrame {
         colorShower.setAlignmentX(Component.LEFT_ALIGNMENT);
         rightPanel.add(colorShower);
         rightPanel.add(colorChooserButton);
-
+        //color chose button ends
         inputManager.getContext().setColor(Color.BLACK);
         ////////////
         //bk changing color button
@@ -138,24 +136,16 @@ public class Frame extends JFrame {
         JLabel colorMixTypeTitle = new JLabel("Color mix type");
         colorMixTypeTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
         rightPanel.add(colorMixTypeTitle);
-        JPanel colorMixTypeButtonPanel = new JPanel();
 
-        //JPanel colorMixTypeButtonPanel1 = new JPanel();
-        //JPanel colorMixTypeButtonPanel2 = new JPanel();
-        int i = 0;
+
+
         for (ColorMixRadioButton button : inputManager.getFormHandler().getColorMixButtons()){
             button.addActionListener(e -> repaint());
             button.setAlignmentX(Component.LEFT_ALIGNMENT);
             rightPanel.add(button);
-            //if (i < 3) colorMixTypeButtonPanel1.add(button);
-            //else colorMixTypeButtonPanel2.add(button);
-            //i++;
+
         }
-        /*colorMixTypeButtonPanel.add(colorMixTypeButtonPanel1);
-        colorMixTypeButtonPanel.add(colorMixTypeButtonPanel2);
-        rightPanel.add(colorMixTypeButtonPanel);*/
-        //rightPanel.add(colorMixTypeButtonPanel1);
-        //rightPanel.add(colorMixTypeButtonPanel2);
+
         //////////////////////
 
 
@@ -170,7 +160,6 @@ public class Frame extends JFrame {
             rightPanel.add(button);
         }
         inputManager.getFormHandler().getShapeButtons().get(0).setSelected(true);
-        //rightPanel.add(shapeButtonPanel);
         //////////////
 
 

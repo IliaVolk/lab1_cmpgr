@@ -8,44 +8,45 @@ import java.awt.event.MouseMotionListener;
 
 import javax.media.opengl.GLEventListener;
 
-public class GlobalMouseListener implements MouseListener, MouseMotionListener{
+public class GlobalMouseListener implements MouseListener, MouseMotionListener {
     private Frame frame;
     private Context context;
-    private PointHandler pointHandler;
     private GLEventListenerImpl glEventListener;
     private ShapeCreator shapeCreator = new ShapeCreator();
+
     public GlobalMouseListener(GLEventListenerImpl glEventListener,
                                Context context,
-                               Frame frame,
-                               PointHandler pointHandler){
+                               Frame frame) {
         this.context = context;
         this.frame = frame;
         this.glEventListener = glEventListener;
-        this.pointHandler = pointHandler;
-        }
-        public void mouseClicked(MouseEvent e) {
+    }
 
-            GLPoint point = Util.screenToGL(e.getX(), e.getY());
-            pointHandler.addPoint(point);
-            frame.repaint();
-        }
+    @Override
+    public void mouseClicked(MouseEvent e) {
 
-        public void mouseEntered(MouseEvent e) {
+    }
 
-        }
+    @Override
+    public void mouseEntered(MouseEvent e) {
 
-        public void mouseExited(MouseEvent e) {
-            shapeCreator.endCreation();
-        }
+    }
 
-        public void mousePressed(MouseEvent e) {
-            shapeCreator.startCreation(e, context, glEventListener);
-            frame.repaint();
-        }
+    @Override
+    public void mouseExited(MouseEvent e) {
+        shapeCreator.endCreation();
+    }
 
-        public void mouseReleased(MouseEvent e) {
-            shapeCreator.endCreation();
-        }
+    @Override
+    public void mousePressed(MouseEvent e) {
+        shapeCreator.startCreation(e, context, glEventListener);
+        frame.repaint();
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        shapeCreator.endCreation();
+    }
 
 
     @Override

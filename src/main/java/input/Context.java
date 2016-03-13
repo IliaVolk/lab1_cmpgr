@@ -47,7 +47,7 @@ public class Context {
 
 
     public Shape getShape() {
-        return shape;
+        return shape.clone();
     }
 
     public void setShape(Shape shape) {

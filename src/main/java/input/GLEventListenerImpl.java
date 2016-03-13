@@ -32,7 +32,8 @@ public class GLEventListenerImpl implements GLEventListener {
 
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
-        glAutoDrawable.getContext().setSwapInterval(100);
+        GL2 gl = glAutoDrawable.getGL().getGL2();
+
     }
 
     @Override
@@ -61,21 +62,10 @@ public class GLEventListenerImpl implements GLEventListener {
         for (Paintable p : paintables){
             p.paint(gl);
         }
-
-        /*gl.glBegin(GL2.GL_QUADS);
-        {
-            gl.glColor3d(0,1,0);
-            gl.glVertex2d(-0.5, 0.5);
-            gl.glVertex2d(0.5, 0.5);
-            gl.glVertex2d(0.5, -0.5);
-            gl.glVertex2d(-0.5, -0.5);
-        }
-        gl.glEnd();*/
-
     }
 
     @Override
     public void reshape(GLAutoDrawable glAutoDrawable, int i, int i1, int i2, int i3) {
-
+        System.gc();
     }
 }
